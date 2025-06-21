@@ -83,12 +83,10 @@ function Weather({ city }) {
 
   function handleKeyPressEnter(e) {
     if (e.keyCode === 13) {
-      setCityName(inputValue.trim().toLowerCase());
+      setCityName(inputValue.replace(/\s+/g, " ").trim().toLowerCase());
       setInputValue("");
     }
   }
-
-  console.log(weatherData, "jiczd");
 
   return (
     <div className="weather-container">
@@ -106,7 +104,7 @@ function Weather({ city }) {
         <button
           onClick={() => {
             console.log(inputValue);
-            setCityName(inputValue.trim().toLowerCase());
+            setCityName(inputValuereplace(/\s+/g, " ").trim().toLowerCase());
             setInputValue("");
           }}
         >
