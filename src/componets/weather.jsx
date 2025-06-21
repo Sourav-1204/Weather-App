@@ -83,7 +83,7 @@ function Weather({ city }) {
 
   function handleKeyPressEnter(e) {
     if (e.keyCode === 13) {
-      setCityName(inputValue);
+      setCityName(inputValue.trim());
       setInputValue("");
     }
   }
@@ -106,7 +106,7 @@ function Weather({ city }) {
         <button
           onClick={() => {
             console.log(inputValue);
-            setCityName(inputValue);
+            setCityName(inputValue.trim());
             setInputValue("");
           }}
         >
