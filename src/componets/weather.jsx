@@ -83,7 +83,12 @@ function Weather({ city }) {
 
   function handleKeyPressEnter(e) {
     if (e.keyCode === 13) {
-      setCityName(inputValue.replace(/\s+/g, " ").trim().toLowerCase());
+      setCityName(
+        inputValue
+          .replace(/[\u200B-\u200D\uFEFF\u00A0]/g, "")
+          .trim()
+          .toLowerCase()
+      );
       setInputValue("");
     }
   }
@@ -104,7 +109,12 @@ function Weather({ city }) {
         <button
           onClick={() => {
             console.log(inputValue);
-            setCityName(inputValuereplace(/\s+/g, " ").trim().toLowerCase());
+            setCityName(
+              inputValue
+                .replace(/[\u200B-\u200D\uFEFF\u00A0]/g, "")
+                .trim()
+                .toLowerCase()
+            );
             setInputValue("");
           }}
         >
