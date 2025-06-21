@@ -71,7 +71,6 @@ function Weather({ city }) {
   }, []);
 
   useEffect(() => {
-    setLoading(true);
     if (city !== "") {
       setCityName(city);
       setLoading(false);
@@ -79,10 +78,7 @@ function Weather({ city }) {
   }, [city]);
 
   useEffect(() => {
-    const dataCall = setTimeout(() => {
-      if (cityName !== "") fetchCityWeatherData();
-    }, 200);
-    return () => clearTimeout(dataCall);
+    if (cityName !== "") fetchCityWeatherData();
   }, [cityName]);
 
   function handleKeyPressEnter(e) {
@@ -92,7 +88,7 @@ function Weather({ city }) {
     }
   }
 
-  console.log(cityName, "jiczd");
+  console.log(weatherData, "jiczd");
 
   return (
     <div className="weather-container">
@@ -109,6 +105,7 @@ function Weather({ city }) {
         />
         <button
           onClick={() => {
+            console.log(inputValue);
             setCityName(inputValue);
             setInputValue("");
           }}
