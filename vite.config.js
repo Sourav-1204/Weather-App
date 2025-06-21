@@ -6,5 +6,5 @@ import fs from "fs";
 export default defineConfig({
   plugins: [react()],
   host: true,
-  base: "/weather-app",
+  base: "/Weather-App",
 })
