@@ -1,17 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --main-color: #d9d9d9;
+  --primary-text : #292929;
+  --main-shadow: 10px 10px 5px #383838;
+}
+
+@font-face {
+  font-family: "gilroy";
+  src: url("./assets/Gilroy-Light.otf");
+}
+
+@font-face {
+  font-family: "gilroy-bold";
+  src: url("./assets/Gilroy-ExtraBold.otf");
+}
+
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
-body{
-    background-color: #F9D195;
-    /* display: flex;
-    justify-content: center; */
+body {
+  background-image: linear-gradient(120deg, white, #466173);
+  color: var(--primary-text);
+}
+
+.custom-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.primary-gradient {
+  background-color: linear-gradient(150deg, #f88408, #f6fad9);
+}
+.secondary-gradient {
+  background-color: linear-gradient(150deg, #443d64, #6582c6);
 }
