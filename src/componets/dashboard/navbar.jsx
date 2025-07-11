@@ -17,29 +17,34 @@ export default function Navbar() {
   }
   return (
     <div className="w-[80%] flex items-center h-[50px] bg-red justify-between mt-[40px]">
-      <label className="ui-switch">
-        <input type="checkbox" />
-        <div className="slider">
-          <div className="circle"></div>
+      <div className="md:size-full flex items-center justify-between">
+        <label className="ui-switch">
+          <input type="checkbox" />
+          <div className="slider">
+            <div className="circle"></div>
+          </div>
+        </label>
+        <div className="px-3 py-1.5 bg-[var(--main-color)] w-[70%] md:w-[50%] rounded-full outline-0 flex items-center shadow-[0px_2px_15px_#5D5C5C]">
+          <FiSearch size="30px" className="w-[10%] text-[#777777]" />
+          <input
+            type="text"
+            value={inputValue}
+            placeholder="Search city..."
+            className="w-[80%] outline-0 text-black placeholder-black"
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleEnterPress}
+          />
         </div>
-      </label>
-      <div className="px-3 py-1.5 bg-[var(--main-color)] w-[50%] rounded-full outline-0 flex items-center shadow-[0px_2px_15px_#5D5C5C]">
-        <FiSearch size="30px" className="w-[10%] text-[#777777]" />
-        <input
-          type="text"
-          value={inputValue}
-          placeholder="Search your preffered city..."
-          className="w-[80%] outline-0 text-black placeholder-black"
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={handleEnterPress}
-        />
+        <button className="flex rounded-full items-center px-5 py-2 gap-2 bg-[#4CBB17] text-[#e5e5e5] font-medium shadow-[0px_2px_15px_#5D5C5C] hide">
+          <span className="text-[#464646] text-2xl font-thin">
+            <CiLocationOn />
+          </span>
+          Current location
+        </button>
       </div>
-      <button className="flex rounded-full items-center px-5 py-2 gap-2 bg-[#4CBB17] text-white font-medium shadow-[0px_2px_15px_#5D5C5C]">
-        <span className="text-[#464646] text-2xl font-thin">
-          <CiLocationOn />
-        </span>{" "}
-        Current location
-      </button>
+      <div>
+
+      </div>
     </div>
   );
 }

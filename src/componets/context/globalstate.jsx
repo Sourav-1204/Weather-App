@@ -3,13 +3,21 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 export const WeatherContext = createContext();
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+const localKey = "cityName";
+
+const initialCityName =
+  sessionStorage.getItem(localKey) !== null &&
+  sessionStorage.getItem(localKey) !== undefined
+    ? sessionStorage.getItem(localKey)
+    : "";
 
 export default function GlobalState({ children }) {
   const [loading, setLoading] = useState(false);
-  const [forecastData, setForecastData] = useState([]);
-  const [hourlyForecast, setHourlyForecast] = useState([]);
-  const [cityName, setCityName] = useState("");
+  const [forecastData, setForecastData] = useState(false);
+  const [hourlyForecast, setHourlyForecast] = useState(false);
+  const [cityName, setCityName] = useState(initialCityName);
   const [currentDayData, setCurrentDayData] = useState(false);
+  const [error, setError] = useState("");
   const [coord, setCoord] = useState({
     latitude: null,
     longitude: null,
@@ -41,9 +49,9 @@ export default function GlobalState({ children }) {
       const apiResponse = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric`
       );
-      const result = await apiResponse.json();
+      const result = apiResponse.ok ? await apiResponse.json() : [];
       const forecastDataByDay = {};
-      const filteredForecast = result.list.filter((item) => {
+      result.list.filter((item) => {
         const date = item.dt_txt.split(" ")[0];
         if (!forecastDataByDay[date]) {
           forecastDataByDay[date] = item;
@@ -55,7 +63,7 @@ export default function GlobalState({ children }) {
       }
 
       if (result && result.list && result.list.length > 0) {
-        const hourlyData = result.list.slice(2, 7);
+        const hourlyData = result.list.slice(2, 10);
         setHourlyForecast(hourlyData);
       }
     } catch (error) {
@@ -72,10 +80,13 @@ export default function GlobalState({ children }) {
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`
       );
       const result = apiResponse.ok ? await apiResponse.json() : false;
+      console.log(result);
       if (result) {
         setCurrentDayData(result);
       }
     } catch (error) {
+      setError(`looks like! you entered wrong city name ${cityName}`);
+      setCurrentDayData([]);
       console.log(error);
     } finally {
       setLoading(false);
@@ -90,6 +101,7 @@ export default function GlobalState({ children }) {
     if (cityName !== "") {
       fetchForecastData();
       fetchCurrentWeatherData();
+      sessionStorage.setItem(localKey, cityName);
     }
   }, [cityName]);
 
@@ -126,6 +138,7 @@ export default function GlobalState({ children }) {
         setCityName,
         toHHMM,
         currentDayData,
+        error,
       }}
     >
       {children}

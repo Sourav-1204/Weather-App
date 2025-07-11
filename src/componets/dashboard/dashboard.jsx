@@ -4,19 +4,25 @@ import Main from "./main";
 import { WeatherContext } from "../context/globalstate";
 
 export default function Dashboard() {
+  const { cityName, currentDayData, error, loading } =
+    useContext(WeatherContext);
 
-  const {cityName } = useContext(WeatherContext);
-  
   return (
     <div
       id="dashboard-main"
       className="w-full h-full flex flex-col items-center"
     >
       <Navbar />
-      {cityName ? (
+      {currentDayData ? (
         <Main />
+      ) : error ? (
+        <p className="text-8xl mt-15 text-[#292929]">
+          OOPS! Search for a city.
+        </p>
+      ) : loading ? (
+        <p className="">Loading data! please wait...</p>
       ) : (
-        <p className="text-8xl mt-15 text-[#292929]">OOPS! Search for a city.</p>
+        <p className="text-8xl mt-15 text-[#292929]">OOPS! Nothing to show.</p>
       )}
     </div>
   );

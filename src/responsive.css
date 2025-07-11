@@ -1,0 +1,51 @@
+@media screen and (max-width: 550px) {
+  #dashboard-main {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(120deg, white, #466173);
+  }
+  #main-top,
+  #main-bottom {
+    flex-direction: column;
+    gap: 20px;
+  }
+  #top-left,
+  #top-right,
+  #bottom-left,
+  #bottom-right {
+    width: 97%;
+    /* padding: 20px 0; */
+  }
+  #top-right-main {
+    padding: 20px;
+    flex-direction: column;
+  }
+  #top-right-main #start {
+    width: 100%;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  #top-right-main #start p {
+    color: #292929;
+  }
+  #top-right-main #end {
+    margin: 15px 0;
+    gap: 20px;
+  }
+  #top-right-main #end .hello {
+    height: 150px;
+    background-color: #1c9ed625;
+    align-items: start;
+    border-radius: 15px;
+    padding: 12px 20px;
+    justify-content: space-between;
+  }
+
+  #top-right-main #end .hello img {
+    width: 30px;
+    height: 30px;
+  }
+  .hide{
+    display: none;
+  }
+}

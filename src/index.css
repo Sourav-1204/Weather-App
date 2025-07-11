@@ -2,7 +2,7 @@
 
 :root {
   --main-color: #d9d9d9;
-  --primary-text : #292929;
+  --primary-text: #292929;
   --main-shadow: 10px 10px 5px #383838;
 }
 
@@ -27,9 +27,17 @@ body {
 }
 
 body {
-  background-image: linear-gradient(120deg, white, #466173);
+  background: linear-gradient(120deg, white, #466173);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   color: var(--primary-text);
 }
+/* #dashboard-main {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(120deg, white, #466173);
+} */
 
 .custom-scroll::-webkit-scrollbar {
   display: none;

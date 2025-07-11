@@ -9,7 +9,7 @@ export default function Forcast() {
   return (
     <div className="w-full h-full flex flex-col items-center custom-scroll overflow-y-auto">
       <p className="text-2xl font-bold my-3">5 Days Forecast:</p>
-      <div className="w-[95%] flex flex-col items-center mb-2 space-y-2">
+      <div className="w-[95%] flex flex-col items-center mb-3 space-y-2 md:mb-2">
         {!loading && forecastData
           ? forecastData.slice(1).map((item) => (
               <div
