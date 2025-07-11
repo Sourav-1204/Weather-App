@@ -20,9 +20,9 @@ export default function Dashboard() {
           OOPS! Search for a city.
         </p>
       ) : loading ? (
-        <p className="">Loading data! please wait...</p>
+        <p className="text-5xl mt-15px text-[#292929]">Loading data! please wait...</p>
       ) : (
-        <p className="text-8xl mt-15 text-[#292929]">OOPS! Nothing to show.</p>
+        <p className="h-[80vh] w-full text-8xl mt-15 text-[#292929]">OOPS! Nothing to show.</p>
       )}
     </div>
   );
